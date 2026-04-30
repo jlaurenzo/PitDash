@@ -31,11 +31,13 @@ public class Main {
         for (JsonElement d : drivers) {
             JsonObject driver = d.getAsJsonObject();
 
-            String name = driver.get("full_name").getAsString();
-            int dNumber = driver.get("driver_number").getAsInt();
+            String fname = driver.get("first_name").getAsString();
+            String lname = driver.get("last_name").getAsString();
+            String dacronym = driver.get("name_acronym").getAsString();
+            int dnumber = driver.get("driver_number").getAsInt();
             String team = driver.get("team_name").getAsString();
 
-            System.out.println(name + "#" + dNumber + " - " + team);
+            System.out.println(fname +" "+ lname + " (" + dacronym +") " + " #" + dnumber + " - " + team);
         }
     }
 }
