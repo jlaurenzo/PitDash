@@ -39,5 +39,7 @@ public class Main {
 
             System.out.println(fname +" "+ lname + " (" + dacronym +") " + " #" + dnumber + " - " + team);
         }
+        Home.showHome();
+
     }
 }
