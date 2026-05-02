@@ -1,45 +1,52 @@
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+import java.util.Scanner;
 import com.google.gson.*;
 
 
 public class Main {
-    public static void main(String[] args) {
-        HttpResponse<String> response = null;
-        try {
-            HttpClient client = HttpClient.newHttpClient();
+    public static void main(String[] args) throws Exception {
 
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI("https://api.openf1.org/v1/drivers?session_key=latest"))
-                    .GET()
-                    .build();
+        Scanner userInput = new Scanner(System.in);
 
-            response = client.send(request,
-                    HttpResponse.BodyHandlers.ofString());
+        System.out.println("====================================");
+        System.out.println("       WELCOME TO PITDASH!");
+        System.out.println(" An application where you can view");
+        System.out.println("  past F1 races, driver standings");
+        System.out.println("key race events and telemetry datas!");
+        System.out.println("====================================");
+        System.out.println("(1) View Drivers & Teams");
+        System.out.println("(2) View Past Races");
+        System.out.println("(3) View Race Tracks");
+        System.out.println("(4) View Race Telemetry");
+        System.out.println("(5) Exit");
+        System.out.println("------------------------------------");
+        System.out.print("Enter Choice: ");
+        int homeChoice = userInput.nextInt();
+        System.out.println("====================================");
 
-            System.out.println(response.body());
+        switch (homeChoice) {
+            case 1:
+                System.out.println("(1) View Drivers");
+                Driver.showDrivers();
+                break;
+            case 2:
 
-        } catch (Exception e) {
-            e.printStackTrace();
+                break;
+
+            case 3:
+
+                break;
+
+            case 4:
+
+
+                break;
+
+            case 5:
+
+                break;
+
+            default:
+                System.out.println("Enter a valid value [1-5]!");
         }
-
-
-        JsonArray drivers = JsonParser.parseString(response.body()).getAsJsonArray();
-
-        for (JsonElement d : drivers) {
-            JsonObject driver = d.getAsJsonObject();
-
-            String fname = driver.get("first_name").getAsString();
-            String lname = driver.get("last_name").getAsString();
-            String dacronym = driver.get("name_acronym").getAsString();
-            int dnumber = driver.get("driver_number").getAsInt();
-            String team = driver.get("team_name").getAsString();
-
-            System.out.println(fname +" "+ lname + " (" + dacronym +") " + " #" + dnumber + " - " + team);
-        }
-        Home.showHome();
-
     }
 }
