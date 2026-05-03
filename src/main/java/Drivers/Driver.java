@@ -1,9 +1,9 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+package Drivers;
 
-import java.util.ArrayList;
+import Drivers.DriversPage;
+import APIManager.OpenF1APIClient;
+import APIManager.OpenF1Service;
+
 import java.util.List;
 
 public class Driver {
@@ -26,11 +26,13 @@ public class Driver {
         return  "#" + driverNumber + " " +firstName + " " + lastName + " (" + nameAcronym + ") " + " " + team;
     }
 
-    public static void showDrivers() throws Exception {
+    public static void showDrivers(String session_key) throws Exception {
+
+
         OpenF1APIClient f1API = new OpenF1APIClient();
         OpenF1Service parser = new OpenF1Service();
 
-        String json = f1API.getDrivers(); //fetch the data
+        String json = f1API.getDrivers(session_key); //fetch the data
         List<Driver> drivers = parser.parseDrivers(json);
 
         for (Driver driverElement : drivers) {
@@ -38,5 +40,10 @@ public class Driver {
         }
 
     }
+
+    public void searchDriverName() {
+
+    }
+
 }
 

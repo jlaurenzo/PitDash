@@ -1,5 +1,7 @@
 import java.util.Scanner;
-import com.google.gson.*;
+
+import Drivers.Driver;
+import Drivers.DriversPage;
 
 
 public class Main {
@@ -13,11 +15,11 @@ public class Main {
         System.out.println("  past F1 races, driver standings");
         System.out.println("key race events and telemetry datas!");
         System.out.println("====================================");
-        System.out.println("(1) View Drivers & Teams");
-        System.out.println("(2) View Past Races");
-        System.out.println("(3) View Race Tracks");
-        System.out.println("(4) View Race Telemetry");
-        System.out.println("(5) Exit");
+        System.out.println("[1] Drivers");
+        System.out.println("[2] Drivers Championship");
+        System.out.println("[3] Constructors Championship");
+        System.out.println("[4] Races");
+        System.out.println("[5] Exit");
         System.out.println("------------------------------------");
         System.out.print("Enter Choice: ");
         int homeChoice = userInput.nextInt();
@@ -25,8 +27,7 @@ public class Main {
 
         switch (homeChoice) {
             case 1:
-                System.out.println("(1) View Drivers");
-                Driver.showDrivers();
+                new DriversPage().showDriversYearPage();
                 break;
             case 2:
 
@@ -48,5 +49,6 @@ public class Main {
             default:
                 System.out.println("Enter a valid value [1-5]!");
         }
+        System.out.println("====================================");
     }
 }
