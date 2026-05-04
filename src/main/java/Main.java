@@ -1,6 +1,4 @@
 import java.util.Scanner;
-
-import Drivers.Driver;
 import Drivers.DriversPage;
 
 

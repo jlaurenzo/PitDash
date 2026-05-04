@@ -27,14 +27,18 @@ public class OpenF1Service {
                     driverOject.get("team_name").getAsString(),
                     driverOject.get("driver_number").getAsInt()
             );
-
             driverList.add(driver);
         }
-
         return driverList;
     }
 
+    public List<Driver> parseDriversbyTeam(String json) {
+        List<Driver> driverList = new ArrayList<>();
 
+
+
+        return driverList;
+    }
 
 
 }

@@ -1,10 +1,11 @@
 package Drivers;
 
-import Drivers.DriversPage;
 import APIManager.OpenF1APIClient;
 import APIManager.OpenF1Service;
-
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Driver {
     String firstName;
@@ -23,22 +24,31 @@ public class Driver {
 
     @Override
     public String toString() {
-        return  "#" + driverNumber + " " +firstName + " " + lastName + " (" + nameAcronym + ") " + " " + team;
+        return  "#" + driverNumber + " " +firstName + " " + lastName + " (" + nameAcronym + ") " + "\n - " + team;
     }
 
-    public static void showDrivers(String session_key) throws Exception {
-
+    public static void showDrivers(List<String> sessionKeys) throws Exception {
 
         OpenF1APIClient f1API = new OpenF1APIClient();
         OpenF1Service parser = new OpenF1Service();
 
-        String json = f1API.getDrivers(session_key); //fetch the data
-        List<Driver> drivers = parser.parseDrivers(json);
+        List<String> allJson = f1API.getDrivers(sessionKeys);
 
-        for (Driver driverElement : drivers) {
-            System.out.println(driverElement);
+        List<Driver> uniqueDrivers = new ArrayList<>();
+        Set<Integer> seen = new HashSet<>();
+
+        for (String json : allJson) {                        // loop each session's JSON
+            List<Driver> drivers = parser.parseDrivers(json);
+            for (Driver d : drivers) {
+                if (seen.add(d.driverNumber)) {
+                    uniqueDrivers.add(d);
+                }
+            }
         }
 
+        for (Driver driverElement : uniqueDrivers) {
+            System.out.println(driverElement);
+        }
     }
 
     public void searchDriverName() {
