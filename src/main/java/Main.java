@@ -10,7 +10,7 @@ public class Main {
         System.out.println("====================================");
         System.out.println("       WELCOME TO PITDASH!");
         System.out.println(" An application where you can view");
-        System.out.println("  past F1 races, driver standings");
+        System.out.println("  past F1 races, driver standings,");
         System.out.println("key race events and telemetry datas!");
         System.out.println("====================================");
         System.out.println("[1] Drivers");
@@ -24,28 +24,9 @@ public class Main {
         System.out.println("====================================");
 
         switch (homeChoice) {
-            case 1:
-                new DriversPage().showDriversYearPage();
-                break;
-            case 2:
+            case 1 -> new DriversPage().showDriversYearPage();
 
-                break;
-
-            case 3:
-
-                break;
-
-            case 4:
-
-
-                break;
-
-            case 5:
-
-                break;
-
-            default:
-                System.out.println("Enter a valid value [1-5]!");
+            default -> System.out.println("Enter a valid value [1-5]!");
         }
         System.out.println("====================================");
     }

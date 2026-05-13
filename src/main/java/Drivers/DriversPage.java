@@ -45,18 +45,12 @@ public class DriversPage {
         mainPage = userInput.nextInt();
 
         switch (mainPage) {
-            case 1:
-                showDrivers();
-                break;
-            case 2:
-                showSearchDriverNamePage();
-                break;
-            case 3:
-                showFilterByTeamPage();
-                break;
-            case 0:
-                showDriversYearPage();
-                break;
+            case 1 -> showDrivers();
+            case 2 -> showSearchDriverNamePage();
+            case 3 -> showFilterByTeamPage();
+            case 0 -> showDriversYearPage();
+
+            default -> System.out.println("Try Again");
 
         }
     }
