@@ -2,10 +2,8 @@ package Drivers;
 
 import APIManager.OpenF1APIClient;
 import APIManager.OpenF1Service;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
 
 public class Driver {
     String firstName;
@@ -51,9 +49,7 @@ public class Driver {
         }
     }
 
-    public void searchDriverName() {
 
-    }
 
 }
 

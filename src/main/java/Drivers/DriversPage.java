@@ -37,8 +37,7 @@ public class DriversPage {
         System.out.println("====================================");
         System.out.println("            DRIVERS PAGE");
         System.out.println("[1] Show drivers");
-        System.out.println("[2] Search driver by name");
-        System.out.println("[3] Filter by team");
+        System.out.println("[2] Filter by team");
         System.out.println("[0] Back");
         System.out.println("------------------------------------");
         System.out.print("Enter Choice: ");
@@ -46,43 +45,43 @@ public class DriversPage {
 
         switch (mainPage) {
             case 1 -> showDrivers();
-            case 2 -> showSearchDriverNamePage();
-            case 3 -> showFilterByTeamPage();
+            case 2 -> showFilterByTeamPage();
             case 0 -> showDriversYearPage();
-
             default -> System.out.println("Try Again");
-
         }
-    }
-
-    public void showSearchDriverNamePage() throws Exception {
-        System.out.println("====================================");
-        System.out.println("            SEARCH DRIVER");
-        System.out.println("[0] Back");
-        System.out.println("------------------------------------");
-        driverName = userInput.nextLine();
-        userInput.nextLine();
-
-        if (driverName == "0") {
-            showDriversMainPage();
-        } else {
-            showDriversMainPage();
-        }
-
-        System.out.println("====================================");
     }
 
     public void showDrivers() throws Exception {
+
         System.out.println("====================================");
         System.out.println("           "+ year + " SEASON");
         Driver.showDrivers(sessionKeys);
         System.out.println("------------------------------------");
+        System.out.println("[0] Back");
+        System.out.println("====================================");
+        System.out.print("Enter Choice: ");
+        mainPage = userInput.nextInt();
+
+        if (mainPage == 0) {
+            showDriversMainPage();
+        }
     }
 
 
     public void showFilterByTeamPage() throws Exception{
         System.out.println("====================================");
         System.out.println("            FILTER BY TEAM");
+        DriverByTeam.filterDriversByTeam(sessionKeys);
+        System.out.println("\n------------------------------------");
+        System.out.println("[0] Back");
+        System.out.println("====================================");
+        System.out.print("Enter Choice: ");
+        mainPage = userInput.nextInt();
+
+        if (mainPage == 0) {
+            showDriversMainPage();
+        }
+
     }
 
 
@@ -94,15 +93,15 @@ public class DriversPage {
                 break;
             case 2:
                 year = "2024";
-                sessionKeys.addAll(Arrays.asList("7953", "9133", "9173"));
+                sessionKeys.addAll(Arrays.asList("9472", "9662"));
                 break;
             case 3:
                 year = "2025";
-                sessionKeys.addAll(Arrays.asList("7953", "9133", "9173"));
+                sessionKeys.addAll(Arrays.asList("9693", "9850"));
                 break;
             case 4:
                 year = "2026";
-                sessionKeys.addAll(Arrays.asList("7953", "9133", "9173"));
+                sessionKeys.addAll(List.of("11465"));
                 break;
             case 5:
                 year = "2023-2026";
