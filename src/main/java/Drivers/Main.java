@@ -1,11 +1,17 @@
+package Drivers;
+
 import java.util.Scanner;
-import Drivers.DriversPage;
 
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    static Scanner userInput = new Scanner(System.in);
 
-        Scanner userInput = new Scanner(System.in);
+    public static void main(String[] args) throws Exception {
+        viewMainPage();
+
+    }
+
+    public static void viewMainPage() throws Exception {
 
         System.out.println("====================================");
         System.out.println("       WELCOME TO PITDASH!");
@@ -25,9 +31,11 @@ public class Main {
 
         switch (homeChoice) {
             case 1 -> new DriversPage().showDriversYearPage();
+            case 2 -> new DriversChampionshipPage().showDriversChampionshipYearPage();
 
             default -> System.out.println("Enter a valid value [1-5]!");
         }
         System.out.println("====================================");
     }
+
 }

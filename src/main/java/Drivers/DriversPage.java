@@ -30,7 +30,14 @@ public class DriversPage {
         season = userInput.nextInt();
         userInput.nextLine();
         getSeason(season);
-        showDriversMainPage();
+
+        switch (season) {
+            case 1, 2, 3, 4, 5 -> showDriversMainPage();
+            case 0 -> Main.viewMainPage();
+        }
+
+
+
     }
 
     public void showDriversMainPage() throws Exception {
