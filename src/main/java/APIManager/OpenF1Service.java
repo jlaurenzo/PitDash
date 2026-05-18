@@ -2,6 +2,7 @@ package APIManager;
 
 import Drivers.Driver;
 import Drivers.DriverByTeam;
+import Drivers.DriverStanding;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -54,5 +55,24 @@ public class OpenF1Service {
         return driverList;
     }
 
+    public List<DriverStanding> parseDriverStanding(String json) {
+        List<DriverStanding> driverStandingList = new ArrayList<>();
+
+        JsonArray dStanding = JsonParser.parseString(json).getAsJsonArray();
+
+        for (JsonElement element : dStanding) {
+            JsonObject standingObect = element.getAsJsonObject();
+
+            DriverStanding standings = new DriverStanding (
+                    standingObect.get("driver_number").getAsInt(),
+                    standingObect.get("points_current").getAsInt(),
+                    standingObect.get("points_start").getAsInt(),
+                    standingObect.get("position_current").getAsInt(),
+                    standingObect.get("position_start").getAsInt()
+            );
+            driverStandingList.add(standings);
+        }
+        return driverStandingList;
+    }
 
 }

@@ -32,5 +32,23 @@ public class OpenF1APIClient {
         return allResponses;
     }
 
+    public List<String> getDriverStanding(List<String> sessionKeys) throws Exception {
+
+        List<String> allResponses = new ArrayList<>();
+        HttpRequest request = null;
+
+        for (String session_key : sessionKeys) {
+            request = HttpRequest.newBuilder()
+                    .uri(new URI("https://api.openf1.org/v1/championship_drivers?session_key=" + session_key))
+                    .GET()
+                    .build();
+            String response = client.send(request, HttpResponse.BodyHandlers.ofString()).body();
+            allResponses.add(response);
+        }
+        return allResponses;
+    }
+
+
+
 
     }

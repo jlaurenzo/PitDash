@@ -1,8 +1,5 @@
 package Drivers;
 
-import APIManager.OpenF1APIClient;
-import APIManager.OpenF1Service;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -112,6 +109,7 @@ public class DriversPage {
                 break;
             case 5:
                 year = "2023-2026";
+                sessionKeys.addAll(Arrays.asList("7953", "9133", "9173", "9472", "9662", "9693", "9850", "11465"));
                 break;
             default:
                 System.out.println("Enter a valid number (1-3 | 0)");
