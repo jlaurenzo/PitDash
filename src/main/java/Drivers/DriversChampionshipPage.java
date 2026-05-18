@@ -10,7 +10,7 @@ public class DriversChampionshipPage {
     Scanner userInput = new Scanner(System.in);
     public List<String> sessionKeys = new ArrayList<>();
     String year;
-
+    boolean finalStanding = false;
     int season;
 
     public void showDriversChampionshipYearPage() throws Exception {
@@ -48,20 +48,29 @@ public class DriversChampionshipPage {
             showDriversChampionshipYearPage();
 
             } else if (choice == 1) {
+                finalStanding = false;
                 showPointsProgression();
 
                 } else if (choice == 2) {
-                showFinalStandings(sessionKeys);
-
+                    finalStanding = true;
+                    showFinalStandings(sessionKeys);
         } else {
             System.out.println("Invalid, try again!");
             driversChampionshipMainPage(sessionKeys);
         }
     }
 
-    public void showPointsProgression() {
+    public void showPointsProgression() throws Exception{
         System.out.println("====================================");
+
+        System.out.println("[0] Back");
         System.out.println("------------------------------------");
+        System.out.print("Enter Choice: ");
+        int choice = userInput.nextInt();
+
+        if (choice ==0) {
+            driversChampionshipMainPage(sessionKeys);
+        }
 
     }
 
@@ -84,30 +93,59 @@ public class DriversChampionshipPage {
 
 
     public List<String> getSeason(int season) {
-        switch (season) {
-            case 1:
-                year = "2023";
-                sessionKeys.addAll(Arrays.asList("9197"));
-                break;
-            case 2:
-                year = "2024";
-                sessionKeys.addAll(Arrays.asList("9662"));
-                break;
-            case 3:
-                year = "2025";
-                sessionKeys.addAll(Arrays.asList("9839"));
-                break;
-            case 4:
-                year = "2026";
-                sessionKeys.addAll(List.of("11436"));
-                break;
-            case 5:
-                year = "2023-2026";
-                sessionKeys.addAll(Arrays.asList("7953", "9133", "9173", "9472", "9662", "9693", "9850", "11465"));
-                break;
-            default:
-                System.out.println("Enter a valid number (1-3 | 0)");
-                break;
+
+        if (finalStanding) {
+            switch (season) {
+                case 1:
+                    year = "2023";
+                    sessionKeys.addAll(Arrays.asList("9197"));
+                    break;
+                case 2:
+                    year = "2024";
+                    sessionKeys.addAll(Arrays.asList("9662"));
+                    break;
+                case 3:
+                    year = "2025";
+                    sessionKeys.addAll(Arrays.asList("9839"));
+                    break;
+                case 4:
+                    year = "2026";
+                    sessionKeys.addAll(List.of("11436"));
+                    break;
+                case 5:
+                    year = "2023-2026";
+                    sessionKeys.addAll(Arrays.asList("7953", "9133", "9173", "9472", "9662", "9693", "9850", "11465"));
+                    break;
+                default:
+                    System.out.println("Enter a valid number (1-3 | 0)");
+                    break;
+            }
+        } else if (finalStanding == false) {
+            switch (season) {
+                case 1:
+                    year = "2023";
+                    sessionKeys.addAll(Arrays.asList("9197"));
+                    break;
+                case 2:
+                    year = "2024";
+                    sessionKeys.addAll(Arrays.asList("9662"));
+                    break;
+                case 3:
+                    year = "2025";
+                    sessionKeys.addAll(Arrays.asList("9839"));
+                    break;
+                case 4:
+                    year = "2026";
+                    sessionKeys.addAll(List.of("11436"));
+                    break;
+                case 5:
+                    year = "2023-2026";
+                    sessionKeys.addAll(Arrays.asList("7953", "9133", "9173", "9472", "9662", "9693", "9850", "11465"));
+                    break;
+                default:
+                    System.out.println("Enter a valid number (1-3 | 0)");
+                    break;
+            }
         }
         return sessionKeys;
     }
